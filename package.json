@@ -1,0 +1,25 @@
+{
+  "name": "game_of_life",
+  "version": "1.0.0",
+  "description": "Game Of Life",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/listton/game_of_life.git"
+  },
+  "author": "Antonina Listopadova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/listton/game_of_life/issues"
+  },
+  "homepage": "https://github.com/listton/game_of_life#readme",
+  "devDependencies": {
+    "@babel/preset-env": "7.16.11",
+    "babel-jest": "27.5.1",
+    "babel-polyfill": "6.26.0",
+    "jest": "27.5.1"
+  }
+}
