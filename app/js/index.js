@@ -3,7 +3,7 @@ import { generateRandomMatrix,
 import { drawGrid,
          drawCells } from './canvas';
 
-import './styles/index.styl';
+import '../styles/index.styl';
 
 const canvas = document.getElementById('life');
 const context = canvas.getContext('2d');

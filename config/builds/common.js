@@ -4,7 +4,7 @@ module.exports = function(_path, env) {
   const isDevelopment = env === 'development';
 
   return {
-    entry: path.resolve(_path, 'app', 'index.js'),
+    entry: path.resolve(_path, 'app', 'js', 'index.js'),
 
     output: {
       path: path.resolve(_path, 'public', 'webpack'),

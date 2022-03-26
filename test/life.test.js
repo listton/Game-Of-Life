@@ -1,7 +1,7 @@
 import { calcField,
          calcCeil,
          calcNeighbours,
-         generateRandomMatrix } from '../app/life';
+         generateRandomMatrix } from '../app/js/life';
 
 let tempMatrix = [[0, 1, 1],
                   [1, 1, 1],
