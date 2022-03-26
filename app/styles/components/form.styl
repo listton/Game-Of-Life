@@ -16,11 +16,14 @@
     color $black
 
   &__input
+    width 55px
     padding 0 0 0 5px
     font 400 16px/24px $helvetica
     color $black
     border 1px solid $grayMedium
     transition border-color 2s ease-in
+    &._small
+      width 50px
     &:active, &:focus
       border 1px solid $violetMedium
 
@@ -38,3 +41,8 @@
       background $violetMedium
     &._hidden
       display none
+
+  &__hint
+    margin-left 5px
+    font 400 14px/26px $helvetica
+    color $grayDark
