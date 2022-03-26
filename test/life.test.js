@@ -54,6 +54,8 @@ test('Calc neighbours', () => {
 });
 
 test('Generate matrix', () => {
-  expect(generateRandomMatrix(3, 4).length).toBe(4);
-  expect(generateRandomMatrix(3, 4)[0].length).toBe(3);
+  expect(generateRandomMatrix(3).length).toBe(3);
+  expect(generateRandomMatrix(3)[0].length).toBe(3);
+  expect(generateRandomMatrix(4).length).toBe(4);
+  expect(generateRandomMatrix(4)[0].length).toBe(4);
 })
