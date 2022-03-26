@@ -1,6 +1,6 @@
-import { addListener } from './gameloop';
+import { addListeners } from './gameloop';
 
 import '../styles/index.styl';
 
-addListener();
+addListeners();
 

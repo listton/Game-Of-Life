@@ -2,29 +2,36 @@ import { generateRandomMatrix,
          calcField } from './life';
 
 import { drawGrid,
-         drawCells } from './canvas';
+         drawCells,
+         clearCanvas } from './canvas';
 
 import { getSize,
          getIterationCount,
          getTimeInterval } from './form';
 
-export function addListener() {
+const canvas = document.getElementById('life');
+const context = canvas.getContext('2d');
+let iterationCount;
+let timerForIteration;
+
+export function addListeners() {
   const startButton = document.querySelector('.js-start');
   startButton.addEventListener('click', init);
+
+  const clearButton = document.querySelector('.js-clear');
+  clearButton.addEventListener('click', clear);
 }
 
 function init() {
   const size = getSize();
-  const iterationCount = getIterationCount();
   const timeIntervalSec = getTimeInterval();
 
-  startGameOfLife(size, iterationCount, timeIntervalSec);
+  iterationCount = getIterationCount();
+
+  startGameOfLife(size, timeIntervalSec);
 }
 
-function startGameOfLife(size, iterationCount, timeIntervalSec) {
-  const canvas = document.getElementById('life');
-  const context = canvas.getContext('2d');
-
+function startGameOfLife(size, timeIntervalSec) {
   let matrix = generateRandomMatrix(size, size);
 
   drawGrid(context, size, size);
@@ -36,9 +43,16 @@ function startGameOfLife(size, iterationCount, timeIntervalSec) {
 
     if (iterationCount) {
       iterationCount--;
-      setTimeout(makeIteration, timeIntervalSec * 1000);
+      timerForIteration = setTimeout(makeIteration, timeIntervalSec * 1000);
     }
   }
 
   makeIteration();
+}
+
+function clear() {
+  iterationCount = 0;
+
+  clearTimeout(timerForIteration);
+  clearCanvas(context);
 }

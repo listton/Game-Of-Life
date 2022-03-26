@@ -59,3 +59,7 @@ function drawFieldBorder(context){
   context.strokeStyle = GRAY;
   context.stroke();
 }
+
+export function clearCanvas(context) {
+  context.clearRect(0, 0, SIZE, SIZE);
+}
