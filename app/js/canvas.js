@@ -1,46 +1,42 @@
-const SIZE = 300;
+const CANVAS_SIZE = 300;
 
 const VIOLET = '#6A0AAB';
 const GRAY = '#d5d5d5';
 const GRAYLIGHT = '#eee';
 const WHITE = '#fff';
 
-// TODO: make it work for non-square matrix (and beautiful)
-
 export function drawCells(context, matrix) {
-  const columns = matrix[0].length;
-  const lines = matrix.length;
-  const coef = SIZE / columns;
+  const size = matrix.length;
+  const coef = CANVAS_SIZE / size;
   
-  for (let i = 0; i < columns; i++) {
-    for (let j = 0; j < lines; j++) {
-      const width = coef - 2;
-      const height = coef - 2;
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      const cellSide = coef - 2;
 
       if (matrix[j][i]) {
         context.fillStyle = VIOLET;
-        context.fillRect(i * coef + 1, j * coef + 1, width, height);
+        context.fillRect(i * coef + 1, j * coef + 1, cellSide, cellSide);
       } else {
         context.fillStyle = WHITE;
-        context.fillRect(i * coef + 1, j * coef + 1, width, height);
+        context.fillRect(i * coef + 1, j * coef + 1, cellSide, cellSide);
       }
     }
   }
 }
 
-export function drawGrid(context, x, y) {
-  const coef = SIZE / x;
+export function drawGrid(context, size) {
+  const coef = CANVAS_SIZE / size;
 
   context.beginPath();
 
-  for (let i = 1; i < x; i++) {
+  for (let i = 1; i < size; i++) {
     context.moveTo(i * coef, 0);
-    context.lineTo(i * coef, SIZE);
+    context.lineTo(i * coef, CANVAS_SIZE);
   }
   
-  for (let j = 1; j < y; j++) {
+  for (let j = 1; j < size; j++) {
     context.moveTo(0, j * coef);
-    context.lineTo(SIZE, j * coef);
+    context.lineTo(CANVAS_SIZE, j * coef);
   }
   
   context.strokeStyle = GRAYLIGHT;
@@ -52,9 +48,9 @@ export function drawGrid(context, x, y) {
 function drawFieldBorder(context){
   context.beginPath();
   context.moveTo(0, 0);
-  context.lineTo(0, SIZE);
-  context.lineTo(SIZE, SIZE);
-  context.lineTo(SIZE, 0);
+  context.lineTo(0, CANVAS_SIZE);
+  context.lineTo(CANVAS_SIZE, CANVAS_SIZE);
+  context.lineTo(CANVAS_SIZE, 0);
   context.lineTo(0, 0);
 
   context.lineWidth = 2;
@@ -63,5 +59,5 @@ function drawFieldBorder(context){
 }
 
 export function clearCanvas(context) {
-  context.clearRect(0, 0, SIZE, SIZE);
+  context.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 }

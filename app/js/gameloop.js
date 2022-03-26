@@ -32,9 +32,9 @@ function init(event) {
   const size = getSize();
   timeIntervalSec = getTimeInterval();
   iterationCount = getIterationCount();
-  matrix = generateRandomMatrix(size, size);
+  matrix = generateRandomMatrix(size);
 
-  drawGrid(context, size, size);
+  drawGrid(context, size);
 
   makeIteration();
 }

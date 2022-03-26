@@ -34,13 +34,13 @@ export function calcNeighbours(matrix, x, y) {
   return summ - matrix[y][x];
 }
 
-export function generateRandomMatrix(x, y) {
+export function generateRandomMatrix(size) {
   const result = [];
 
-  for (let i = 0; i < y; i++) {
+  for (let i = 0; i < size; i++) {
     result.push([]);
 
-    for (let j = 0; j < x; j++) {
+    for (let j = 0; j < size; j++) {
       result[i].push(Math.floor(Math.random() * 2));
     }
   }
