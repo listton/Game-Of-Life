@@ -1,0 +1,36 @@
+.form
+  width 300px
+  margin 0 auto
+
+  &__legend
+    margin-bottom 15px
+    font 400 18px/28px $helvetica
+    color $violetDark
+  
+  &__item
+    margin-bottom 10px
+
+  &__label
+    margin-right 5px
+    font 400 16px/26px $helvetica
+    color $black
+
+  &__input
+    padding 0 0 0 5px
+    font 400 16px/24px $helvetica
+    color $black
+    border 1px solid $grayMedium
+    transition border-color 2s ease-in
+    &:active, &:focus
+      border 1px solid $violetMedium
+
+  &__button
+    padding 5px 15px
+    font 400 16px/24px $helvetica
+    color #fff
+    border none
+    background $violetDark
+    transition background .2s ease-in
+    cursor pointer
+    &:hover, &:active, &:focus
+      background $violetMedium
