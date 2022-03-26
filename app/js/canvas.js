@@ -7,11 +7,13 @@ const WHITE = '#fff';
 
 // TODO: make it work for non-square matrix (and beautiful)
 
-export function drawCells(context, matrix, x, y) {
-  const coef = SIZE / x;
-
-  for (let i = 0; i < x; i++) {
-    for (let j = 0; j < y; j++) {
+export function drawCells(context, matrix) {
+  const columns = matrix[0].length;
+  const lines = matrix.length;
+  const coef = SIZE / columns;
+  
+  for (let i = 0; i < columns; i++) {
+    for (let j = 0; j < lines; j++) {
       const width = coef - 2;
       const height = coef - 2;
 

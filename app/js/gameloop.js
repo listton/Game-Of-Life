@@ -11,43 +11,45 @@ import { getSize,
 
 const canvas = document.getElementById('life');
 const context = canvas.getContext('2d');
+
 let iterationCount;
+let matrix;
+let timeIntervalSec;
 let timerForIteration;
 
 export function addListeners() {
-  const startButton = document.querySelector('.js-start');
-  startButton.addEventListener('click', init);
-
-  const clearButton = document.querySelector('.js-clear');
-  clearButton.addEventListener('click', clear);
+  document.querySelector('.js-start').addEventListener('click', init);
+  document.querySelector('.js-play').addEventListener('click', play);
+  document.querySelector('.js-pause').addEventListener('click', pause);
+  document.querySelector('.js-clear').addEventListener('click', clear);
 }
 
-function init() {
+function init(event) {
+  event.target.classList.toggle('_hidden');
+  document.querySelector('.js-pause').classList.toggle('_hidden');
+  document.querySelector('.js-clear').classList.toggle('_hidden');
+
   const size = getSize();
-  const timeIntervalSec = getTimeInterval();
-
+  timeIntervalSec = getTimeInterval();
   iterationCount = getIterationCount();
-
-  startGameOfLife(size, timeIntervalSec);
-}
-
-function startGameOfLife(size, timeIntervalSec) {
-  let matrix = generateRandomMatrix(size, size);
+  matrix = generateRandomMatrix(size, size);
 
   drawGrid(context, size, size);
 
-  function makeIteration() {
-    matrix = calcField(matrix);
-
-    drawCells(context, matrix, size, size);
-
-    if (iterationCount) {
-      iterationCount--;
-      timerForIteration = setTimeout(makeIteration, timeIntervalSec * 1000);
-    }
-  }
-
   makeIteration();
+}
+
+function makeIteration() {
+  matrix = calcField(matrix);
+
+  drawCells(context, matrix);
+
+  if (iterationCount) {
+    iterationCount--;
+    timerForIteration = setTimeout(makeIteration, timeIntervalSec * 1000);
+  } else {
+    resetButtons();
+  }
 }
 
 function clear() {
@@ -55,4 +57,27 @@ function clear() {
 
   clearTimeout(timerForIteration);
   clearCanvas(context);
+
+  resetButtons();
+}
+
+function pause(event) {
+  clearTimeout(timerForIteration);
+
+  event.target.classList.toggle('_hidden');
+  document.querySelector('.js-play').classList.toggle('_hidden');
+}
+
+function play(event) {
+  event.target.classList.toggle('_hidden');
+  document.querySelector('.js-pause').classList.toggle('_hidden');
+
+  makeIteration();
+}
+
+function resetButtons() {
+  document.querySelector('.js-start').classList.remove('_hidden');
+  document.querySelector('.js-clear').classList.add('_hidden');
+  document.querySelector('.js-pause').classList.add('_hidden');
+  document.querySelector('.js-play').classList.add('_hidden');
 }
