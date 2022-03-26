@@ -30,3 +30,7 @@ Or:
 - Tests. I wanted to try Jest, so there is Jest. Coderetrit is about TDD and I used it here for developing game rules.  
 - Webpack. Because I needed to transpile JavaScript and I wanted to pay attention to the development of the Game Of Life. Webpack is the most familiar tool for me.
 - This application developed just for fun :) I wanted to do it and did it.
+
+Preview:
+
+<img src='./preview.gif' width='300px'>
