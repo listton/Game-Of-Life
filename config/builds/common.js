@@ -7,7 +7,7 @@ module.exports = function(_path, env) {
     entry: path.resolve(_path, 'app', 'js', 'index.js'),
 
     output: {
-      path: path.resolve(_path, 'public', 'webpack'),
+      path: path.resolve(_path, 'docs'),
       filename: isDevelopment ? '[name].js' : '[name].[hash:8].js',
       clean: true,
     },
@@ -17,13 +17,14 @@ module.exports = function(_path, env) {
       hot: isDevelopment,
       compress: true,
       clientLogLevel: 'warn',
-      contentBase: path.resolve(_path, 'public'),
+      contentBase: path.resolve(_path, 'docs'),
       watchContentBase: true,
     },
 
     plugins: [
       require('../plugins/HtmlWebpackPlugin')(_path),  
       require('../plugins/MiniCssExtractPlugin')(env),
+      require('../plugins/CopyWebpackPlugin')(_path)
     ],
 
     module: {
@@ -31,8 +32,7 @@ module.exports = function(_path, env) {
         {
           oneOf: [
             require('../rules/js')(_path),
-            require('../rules/styl')(),
-            require('../rules/other')(_path)
+            require('../rules/styl')()
           ]
         }
       ],
