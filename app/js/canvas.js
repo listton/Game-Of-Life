@@ -13,7 +13,7 @@ export function drawCells(context, matrix) {
     for (let j = 0; j < size; j++) {
       const cellSide = coef - 2;
 
-      if (matrix[j][i]) {
+      if (matrix[j][i] === 1) {
         context.fillStyle = VIOLET;
         context.fillRect(i * coef + 1, j * coef + 1, cellSide, cellSide);
       } else {

@@ -7,7 +7,7 @@ import { drawGrid,
 
 import { getSize,
          getIterationCount,
-         getTimeInterval } from './form';
+         getTimeInterval } from './validation';
 
 const canvas = document.getElementById('life');
 const context = canvas.getContext('2d');
@@ -44,7 +44,7 @@ function makeIteration() {
 
   drawCells(context, matrix);
 
-  if (iterationCount) {
+  if (iterationCount > 0) {
     iterationCount--;
     timerForIteration = setTimeout(makeIteration, timeIntervalSec * 1000);
   } else {
@@ -57,7 +57,6 @@ function clear() {
 
   clearTimeout(timerForIteration);
   clearCanvas(context);
-
   resetButtons();
 }
 
@@ -69,10 +68,10 @@ function pause(event) {
 }
 
 function play(event) {
+  makeIteration();
+
   event.target.classList.toggle('_hidden');
   document.querySelector('.js-pause').classList.toggle('_hidden');
-
-  makeIteration();
 }
 
 function resetButtons() {
