@@ -15,7 +15,7 @@ It's also used for [Coderetreat](https://www.coderetreat.org/). I participated i
 
 ## How to start
 
-The easiest way — link to github pages
+The easiest way — [github page](https://listton.github.io/Game-Of-Life/)
 
 Or:
 
